@@ -256,7 +256,7 @@ class AIOCE_THANKYOU_WIDGET extends \Elementor\Widget_Base
 		}
 
 		global $wp;
-		$order_id = wc_get_order_id_by_order_key($wp->query_vars['key']);
+		$order_id = $wp->query_vars['order-received'];
 		if (!$order_id) {
 			return;
 		}
@@ -303,74 +303,36 @@ class AIOCE_THANKYOU_WIDGET extends \Elementor\Widget_Base
 		$table_width = $settings['table_width'];
 
 ?>
-		<div class="custom-order-info-widget">
-			<div class="widget-header" style="text-align: <?php echo esc_attr($header_alignment); ?>;">
+		<div>
+			<div style="text-align: <?php echo esc_attr($header_alignment); ?>;">
 				<h2 style="color: <?php echo esc_attr($header_color); ?>; font-size: <?php echo esc_attr($header_font_size); ?>; font-family: <?php echo esc_attr($header_font_family); ?>;">
 					<?php echo esc_html($header_label); ?>
 
 				</h2>
 			</div>
-			<table class="order-details-table" style="width: <?php echo esc_attr($table_width); ?>; border-collapse: collapse; margin-top: 20px;">
+			<table style="width: <?php echo esc_attr($table_width); ?>; border-collapse: collapse; margin-top: 20px;">
 				<tbody>
 					<?php if ($table_columns === '2') : ?>
 						<tr>
 							<th style="padding: <?php echo esc_attr($table_padding); ?>; border: <?php echo esc_attr($table_border); ?> solid <?php echo esc_attr($table_border_color); ?>; background-color: <?php echo esc_attr($table_background_color); ?>; color: <?php echo esc_attr($th_label_color); ?>; font-size: <?php echo esc_attr($th_label_font_size); ?>; font-family: <?php echo esc_attr($th_label_font_family); ?>;"><?php echo esc_html($th_label_subtotal); ?>:</th>
-							<td style="padding: <?php echo esc_attr($table_padding); ?>; border: <?php echo esc_attr($table_border); ?> solid <?php echo esc_attr($table_border_color); ?>;"><?php echo esc_html($order_subtotal); ?></td>
+							<td style="padding: <?php echo esc_attr($table_padding); ?>; border: <?php echo esc_attr($table_border); ?> solid <?php echo esc_attr($table_border_color); ?>;"><?php echo wp_kses_post($order_subtotal); ?></td>
 						</tr>
 						<tr>
 							<th style="padding: <?php echo esc_attr($table_padding); ?>; border: <?php echo esc_attr($table_border); ?> solid <?php echo esc_attr($table_border_color); ?>; background-color: <?php echo esc_attr($table_background_color); ?>; color: <?php echo esc_attr($th_label_color); ?>; font-size: <?php echo esc_attr($th_label_font_size); ?>; font-family: <?php echo esc_attr($th_label_font_family); ?>;"><?php echo esc_html($th_label_total); ?>:</th>
-							<td style="padding: <?php echo esc_attr($table_padding); ?>; border: <?php echo esc_attr($table_border); ?> solid <?php echo esc_attr($table_border_color); ?>;"><?php echo esc_html($order_total); ?></td>
+							<td style="padding: <?php echo esc_attr($table_padding); ?>; border: <?php echo esc_attr($table_border); ?> solid <?php echo esc_attr($table_border_color); ?>;"><?php echo wp_kses_post($order_total); ?></td>
 						</tr>
 					<?php else : ?>
 						<tr>
-							<td style="padding: <?php echo esc_attr($table_padding); ?>; border: <?php echo esc_attr($table_border); ?> solid <?php echo esc_attr($table_border_color); ?>;"><?php echo esc_html($th_label_subtotal); ?>: <?php echo esc_html($order_subtotal); ?></td>
+							<td style="padding: <?php echo esc_attr($table_padding); ?>; border: <?php echo esc_attr($table_border); ?> solid <?php echo esc_attr($table_border_color); ?>;"><?php echo esc_html($th_label_subtotal); ?>: <?php echo wp_kses_post($order_subtotal); ?></td>
 						</tr>
 						<tr>
-							<td style="padding: <?php echo esc_attr($table_padding); ?>; border: <?php echo esc_attr($table_border); ?> solid <?php echo esc_attr($table_border_color); ?>;"><?php echo esc_html($th_label_total); ?>: <?php echo esc_html($order_total); ?></td>
+							<td style="padding: <?php echo esc_attr($table_padding); ?>; border: <?php echo esc_attr($table_border); ?> solid <?php echo esc_attr($table_border_color); ?>;"><?php echo esc_html($th_label_total); ?>: <?php echo wp_kses_post($order_total); ?></td>
 						</tr>
 					<?php endif; ?>
 				</tbody>
 			</table>
 		</div>
-		<style type="text/css">
-			.custom-order-info-widget {
-				margin: 20px 0;
-			}
 
-			.custom-order-info-widget .widget-header {
-				margin-bottom: 20px;
-			}
-
-			.custom-order-info-widget .widget-header h2 {
-				margin: 0;
-				font-weight: bold;
-			}
-
-			.custom-order-info-widget .order-details-table {
-				width: 100%;
-				border-collapse: collapse;
-			}
-
-			.custom-order-info-widget .order-details-table th,
-			.custom-order-info-widget .order-details-table td {
-				padding: 15px;
-				border: 1px solid #ddd;
-				text-align: left;
-			}
-
-			.custom-order-info-widget .order-details-table th {
-				background-color: #f4f4f4;
-				font-weight: bold;
-			}
-
-			.custom-order-info-widget .order-details-table tr:nth-child(even) td {
-				background-color: #f9f9f9;
-			}
-
-			.custom-order-info-widget .order-details-table tr:hover td {
-				background-color: #f1f1f1;
-			}
-		</style>
 <?php
 	}
 }

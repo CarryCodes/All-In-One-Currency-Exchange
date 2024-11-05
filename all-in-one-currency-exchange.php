@@ -45,9 +45,8 @@ final class AIOCE
      */
     private function integrations()
     {
-        if (is_admin()) {
-            require_once(AIOCE_ABSPATH . 'includes/admin/integrations/class-aioce-elementor.php');
-        }
+
+        require_once(AIOCE_ABSPATH . 'includes/admin/integrations/class-aioce-elementor.php');
         require_once(AIOCE_ABSPATH . 'includes/admin/integrations/class-aioce-wc.php');
     }
     /**

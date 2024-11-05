@@ -57,7 +57,7 @@ class AIOCE_WCFunc
 		if (isset($data['status'])) {
 			if ($data['status'] == 'fail') {
 				if ($data['message'] == 'Quota has not remining requests!') {
-					set_transient('quota', null, AIOCE_API_TRANSIENTFAIL);
+					set_transient(AIOCE_PREFIX . 'quota', null, AIOCE_API_TRANSIENTFAIL);
 				}
 				return null;
 			}
@@ -67,7 +67,7 @@ class AIOCE_WCFunc
 		}
 
 		$conversion_rate = floatval($data['conversion_rate']);
-		set_transient('conversionRate' . $currency, $conversion_rate, AIOCE_API_TRANSIENT);
+		set_transient(AIOCE_PREFIX . 'conversionRate' . $currency, $conversion_rate, AIOCE_API_TRANSIENT);
 
 		return $conversion_rate;
 	}

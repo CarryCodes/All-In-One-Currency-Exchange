@@ -13,6 +13,8 @@ Now you can turn your site to calculate the price of everything in your woocomme
 == Description ==
 Now you can show the products in your woocommerce shop in many currencies to become an international shop with up to update currencies data in our coulds.
 
+This plugin has been build with react and tailwindcss and will be in our github repo if you want  to join us developing it.
+
 == Frequently Asked Questions ==
 
 = Where can I find the All In One Currency Exchange documentation and setup guide? =
@@ -48,8 +50,23 @@ View the [Testing features previews FAQ](https://github.com/CarryCodes/All-In-On
 
 = All In One Currency Exchange is awesome! Can I contribute? =
 
-Yes, you can! Contributions are always appreciated. Join in on our [GitHub repository](https://github.com/CarryCodes/All-In-One-Currency-Exchange/issues) to stay up-to-date with the latest developments.
+Yes, you can! Contributions are always appreciated. Join in on our [GitHub repository](https://github.com/CarryCodes/All-In-One-Currency-Exchange) to stay up-to-date with the latest developments.
 
+== External Services ==
+
+The **All In One Currency Exchange** plugin connects to the [CurrencyExchangeRateAPI](https://currencyexchangerate-api.com) to retrieve live currency exchange rates. This functionality is essential for displaying accurate currency conversions in your WooCommerce shop.
+
+When the plugin is activated, it sends the admin’s selected currency preferences to the CurrencyExchangeRateAPI each time the relevant widget is loaded. The API request follows the schema:
+
+```
+https://api.currencyexchangerate-api.com/v1/YOUR-API-KEY/latest/USD
+```
+
+Here, `YOUR-API-KEY` should be replaced with your actual API key, and `USD` is the base currency for the exchange rates.
+
+If the user's location or currency preference is not available, the plugin will display a configurable default currency.
+
+This service is governed by [CurrencyExchangeRateAPI's Terms of Use](https://currencyexchangerate-api.com/terms) and [Privacy Policy](https://currencyexchangerate-api.com/privacy). Please ensure to review these documents for information on how your data is handled and your rights regarding personal information.
 
 == Installation ==
 

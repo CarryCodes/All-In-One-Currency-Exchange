@@ -1,17 +1,287 @@
-(function(){"use strict";var h={},P={exports:{}},o={};/**
- * @license React
- * react.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */var y=Symbol.for("react.element"),x=Symbol.for("react.portal"),U=Symbol.for("react.fragment"),G=Symbol.for("react.strict_mode"),g=Symbol.for("react.profiler"),j=Symbol.for("react.provider"),H=Symbol.for("react.context"),V=Symbol.for("react.forward_ref"),Z=Symbol.for("react.suspense"),Y=Symbol.for("react.memo"),W=Symbol.for("react.lazy"),C=Symbol.iterator;function X(e){return e===null||typeof e!="object"?null:(e=C&&e[C]||e["@@iterator"],typeof e=="function"?e:null)}var O={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}},E=Object.assign,L={};function d(e,t,n){this.props=e,this.context=t,this.refs=L,this.updater=n||O}d.prototype.isReactComponent={},d.prototype.setState=function(e,t){if(typeof e!="object"&&typeof e!="function"&&e!=null)throw Error("setState(...): takes an object of state variables to update or a function which returns an object of state variables.");this.updater.enqueueSetState(this,e,t,"setState")},d.prototype.forceUpdate=function(e){this.updater.enqueueForceUpdate(this,e,"forceUpdate")};function F(){}F.prototype=d.prototype;function R(e,t,n){this.props=e,this.context=t,this.refs=L,this.updater=n||O}var v=R.prototype=new F;v.constructor=R,E(v,d.prototype),v.isPureReactComponent=!0;var N=Array.isArray,b=Object.prototype.hasOwnProperty,k={current:null},T={key:!0,ref:!0,__self:!0,__source:!0};function A(e,t,n){var r,i={},c=null,s=null;if(t!=null)for(r in t.ref!==void 0&&(s=t.ref),t.key!==void 0&&(c=""+t.key),t)b.call(t,r)&&!T.hasOwnProperty(r)&&(i[r]=t[r]);var u=arguments.length-2;if(u===1)i.children=n;else if(1<u){for(var l=Array(u),f=0;f<u;f++)l[f]=arguments[f+2];i.children=l}if(e&&e.defaultProps)for(r in u=e.defaultProps,u)i[r]===void 0&&(i[r]=u[r]);return{$$typeof:y,type:e,key:c,ref:s,props:i,_owner:k.current}}function q(e,t){return{$$typeof:y,type:e.type,key:t,ref:e.ref,props:e.props,_owner:e._owner}}function $(e){return typeof e=="object"&&e!==null&&e.$$typeof===y}function J(e){var t={"=":"=0",":":"=2"};return"$"+e.replace(/[=:]/g,function(n){return t[n]})}var M=/\/+/g;function w(e,t){return typeof e=="object"&&e!==null&&e.key!=null?J(""+e.key):t.toString(36)}function _(e,t,n,r,i){var c=typeof e;(c==="undefined"||c==="boolean")&&(e=null);var s=!1;if(e===null)s=!0;else switch(c){case"string":case"number":s=!0;break;case"object":switch(e.$$typeof){case y:case x:s=!0}}if(s)return s=e,i=i(s),e=r===""?"."+w(s,0):r,N(i)?(n="",e!=null&&(n=e.replace(M,"$&/")+"/"),_(i,t,n,"",function(f){return f})):i!=null&&($(i)&&(i=q(i,n+(!i.key||s&&s.key===i.key?"":(""+i.key).replace(M,"$&/")+"/")+e)),t.push(i)),1;if(s=0,r=r===""?".":r+":",N(e))for(var u=0;u<e.length;u++){c=e[u];var l=r+w(c,u);s+=_(c,t,n,l,i)}else if(l=X(e),typeof l=="function")for(e=l.call(e),u=0;!(c=e.next()).done;)c=c.value,l=r+w(c,u++),s+=_(c,t,n,l,i);else if(c==="object")throw t=String(e),Error("Objects are not valid as a React child (found: "+(t==="[object Object]"?"object with keys {"+Object.keys(e).join(", ")+"}":t)+"). If you meant to render a collection of children, use an array instead.");return s}function m(e,t,n){if(e==null)return e;var r=[],i=0;return _(e,r,"","",function(c){return t.call(n,c,i++)}),r}function z(e){if(e._status===-1){var t=e._result;t=t(),t.then(function(n){(e._status===0||e._status===-1)&&(e._status=1,e._result=n)},function(n){(e._status===0||e._status===-1)&&(e._status=2,e._result=n)}),e._status===-1&&(e._status=0,e._result=t)}if(e._status===1)return e._result.default;throw e._result}var a={current:null},S={transition:null},Q={ReactCurrentDispatcher:a,ReactCurrentBatchConfig:S,ReactCurrentOwner:k};o.Children={map:m,forEach:function(e,t,n){m(e,function(){t.apply(this,arguments)},n)},count:function(e){var t=0;return m(e,function(){t++}),t},toArray:function(e){return m(e,function(t){return t})||[]},only:function(e){if(!$(e))throw Error("React.Children.only expected to receive a single React element child.");return e}},o.Component=d,o.Fragment=U,o.Profiler=g,o.PureComponent=R,o.StrictMode=G,o.Suspense=Z,o.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED=Q,o.cloneElement=function(e,t,n){if(e==null)throw Error("React.cloneElement(...): The argument must be a React element, but you passed "+e+".");var r=E({},e.props),i=e.key,c=e.ref,s=e._owner;if(t!=null){if(t.ref!==void 0&&(c=t.ref,s=k.current),t.key!==void 0&&(i=""+t.key),e.type&&e.type.defaultProps)var u=e.type.defaultProps;for(l in t)b.call(t,l)&&!T.hasOwnProperty(l)&&(r[l]=t[l]===void 0&&u!==void 0?u[l]:t[l])}var l=arguments.length-2;if(l===1)r.children=n;else if(1<l){u=Array(l);for(var f=0;f<l;f++)u[f]=arguments[f+2];r.children=u}return{$$typeof:y,type:e.type,key:i,ref:c,props:r,_owner:s}},o.createContext=function(e){return e={$$typeof:H,_currentValue:e,_currentValue2:e,_threadCount:0,Provider:null,Consumer:null,_defaultValue:null,_globalName:null},e.Provider={$$typeof:j,_context:e},e.Consumer=e},o.createElement=A,o.createFactory=function(e){var t=A.bind(null,e);return t.type=e,t},o.createRef=function(){return{current:null}},o.forwardRef=function(e){return{$$typeof:V,render:e}},o.isValidElement=$,o.lazy=function(e){return{$$typeof:W,_payload:{_status:-1,_result:e},_init:z}},o.memo=function(e,t){return{$$typeof:Y,type:e,compare:t===void 0?null:t}},o.startTransition=function(e){var t=S.transition;S.transition={};try{e()}finally{S.transition=t}},o.unstable_act=function(){throw Error("act(...) is not supported in production builds of React.")},o.useCallback=function(e,t){return a.current.useCallback(e,t)},o.useContext=function(e){return a.current.useContext(e)},o.useDebugValue=function(){},o.useDeferredValue=function(e){return a.current.useDeferredValue(e)},o.useEffect=function(e,t){return a.current.useEffect(e,t)},o.useId=function(){return a.current.useId()},o.useImperativeHandle=function(e,t,n){return a.current.useImperativeHandle(e,t,n)},o.useInsertionEffect=function(e,t){return a.current.useInsertionEffect(e,t)},o.useLayoutEffect=function(e,t){return a.current.useLayoutEffect(e,t)},o.useMemo=function(e,t){return a.current.useMemo(e,t)},o.useReducer=function(e,t,n){return a.current.useReducer(e,t,n)},o.useRef=function(e){return a.current.useRef(e)},o.useState=function(e){return a.current.useState(e)},o.useSyncExternalStore=function(e,t,n){return a.current.useSyncExternalStore(e,t,n)},o.useTransition=function(){return a.current.useTransition()},o.version="18.2.0",P.exports=o;var ee=P.exports;/**
- * @license React
- * react-jsx-runtime.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */var te=ee,re=Symbol.for("react.element"),ne=Symbol.for("react.fragment"),oe=Object.prototype.hasOwnProperty,ie=te.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,ue={key:!0,ref:!0,__self:!0,__source:!0};function K(e,t,n){var r,i={},c=null,s=null;n!==void 0&&(c=""+n),t.key!==void 0&&(c=""+t.key),t.ref!==void 0&&(s=t.ref);for(r in t)oe.call(t,r)&&!ue.hasOwnProperty(r)&&(i[r]=t[r]);if(e&&e.defaultProps)for(r in t=e.defaultProps,t)i[r]===void 0&&(i[r]=t[r]);return{$$typeof:re,type:e,key:c,ref:s,props:i,_owner:ie.current}}h.Fragment=ne,h.jsx=K,h.jsxs=K;const ce={AED:"د.إ",AFN:"؋",ALL:"L",AMD:"֏",ANG:"ƒ",AOA:"Kz",ARS:"$",AUD:"$",AWG:"ƒ",AZN:"₼",BAM:"KM",BBD:"$",BDT:"৳",BGN:"лв",BHD:".د.ب",BIF:"FBu",BMD:"$",BND:"$",BOB:"$b",BRL:"R$",BSD:"$",BTN:"Nu.",BWP:"P",BYN:"Br",BZD:"$",CAD:"$",CDF:"FC",CHF:"CHF",CLP:"$",CNY:"¥",COP:"$",CRC:"₡",CUC:"$",CUP:"$",CVE:"$",CZK:"Kč",DJF:"Fdj",DKK:"kr",DOP:"$",DZD:"د.ج",EGP:"£",ERN:"Nfk",ETB:"Br",EUR:"€",FJD:"$",FKP:"£",FOK:"kr",GBP:"£",GEL:"₾",GHS:"₵",GIP:"£",GMD:"D",GNF:"FG",GTQ:"Q",GYD:"$",HKD:"$",HNL:"L",HRK:"kn",HTG:"G",HUF:"Ft",IDR:"Rp",ILS:"₪",INR:"₹",IQD:"ع.د",IRR:"﷼",ISK:"kr",JMD:"$",JOD:"د.ا",JPY:"¥",KES:"KSh",KGS:"с",KHR:"៛",KID:"$",KMF:"CF",KRW:"₩",KWD:"د.ك",KYD:"$",KZT:"₸",LAK:"₭",LBP:"ل.ل",LKR:"Rs",LRD:"$",LSL:"L",LYD:"ل.د",MAD:"د.م.",MDL:"L",MGA:"Ar",MKD:"ден",MMK:"K",MNT:"₮",MOP:"MOP$",MRU:"UM",MUR:"₨",MVR:"Rf",MWK:"MK",MXN:"$",MYR:"RM",MZN:"MT",NAD:"$",NGN:"₦",NIO:"C$",NOK:"kr",NPR:"Rs",NZD:"$",OMR:"ر.ع.",PAB:"B/.",PEN:"S/.",PGK:"K",PHP:"₱",PKR:"Rs",PLN:"zł",PYG:"₲",QAR:"ر.ق",RON:"lei",RSD:"дин.",RUB:"₽",RWF:"FRw",SAR:"ر.س",SBD:"$",SCR:"₨",SDG:"ج.س.",SEK:"kr",SGD:"$",SHP:"£",SLL:"Le",SOS:"S",SRD:"$",SSP:"£",STN:"Db",SYP:"ل.س",SZL:"E",THB:"฿",TJS:"SM",TMT:"T",TND:"د.ت",TOP:"T$",TRY:"₺",TTD:"$",TVD:"$",TZS:"TSh",UAH:"₴",UGX:"USh",USD:"$",UYU:"$U",UZS:"soʼm",VES:"Bs.S.",VND:"₫",VUV:"VT",WST:"T",XAF:"FCFA",XAG:"XAG",XAU:"XAU",XCD:"$",XDR:"XDR",XOF:"CFA",XPF:"₣",YER:"ر.ي",ZAR:"R",ZMK:"ZK",ZMW:"ZK",ZWL:"$"};function D(e){return ce[e]||e}const I=()=>{if(window.wc&&window.wc.blocksCheckout!=null){const e=window.wc.wcSettings.getSetting("aioce-wc-blocks_data",{}),{registerCheckoutFilters:t}=window.wc.blocksCheckout,n=u=>(u==null?void 0:u.context)==="summary",r=u=>(u==null?void 0:u.context)==="cart";t("aioce",{cartItemPrice:(u,l,f,B)=>{if(e.conversion_rate!=null&&(r(f)&&e.settings.aioce_wc_cart=="1"||n(f)&&e.settings.aioce_wc_checkout=="1")){let p=parseInt(f.cartItem.totals.line_subtotal)*e.conversion_rate;return p/=100,"<price/> ("+D(e.currency)+" "+p.toFixed(2)+")"}return u},subtotalPriceFormat:(u,l,f,B)=>{if(e.conversion_rate!=null&&(r(f)&&e.settings.aioce_wc_cart=="1"||n(f)&&e.settings.aioce_wc_checkout=="1")){let p=parseInt(f.cartItem.prices.sale_price)*e.conversion_rate;return p/=100,"<price/> ("+D(e.currency)+" "+p.toFixed(2)+")"}return u},totalValue:(u,l,f,B)=>{if(e.conversion_rate!=null&&(e.settings.aioce_wc_cart=="1"||e.settings.aioce_wc_checkout=="1")){let p=parseInt(f.cart.cartTotals.total_price)*e.conversion_rate;return p/=100,"<price/> ("+D(e.currency)+" "+p.toFixed(2)+")"}return u}}),clearInterval(se)}},se=setInterval(()=>{window.wc&&window.wc.blocksCheckout&&I()},1e3);document.addEventListener("DOMContentLoaded",()=>{window.wc&&window.wc.blocksCheckout&&I()})})();
+const currencySymbols = {
+  AED: "د.إ", // United Arab Emirates Dirham
+  AFN: "؋", // Afghan Afghani
+  ALL: "L", // Albanian Lek
+  AMD: "֏", // Armenian Dram
+  ANG: "ƒ", // Netherlands Antillean Guilder
+  AOA: "Kz", // Angolan Kwanza
+  ARS: "$", // Argentine Peso
+  AUD: "$", // Australian Dollar
+  AWG: "ƒ", // Aruban Florin
+  AZN: "₼", // Azerbaijani Manat
+  BAM: "KM", // Bosnia and Herzegovina Convertible Mark
+  BBD: "$", // Barbadian Dollar
+  BDT: "৳", // Bangladeshi Taka
+  BGN: "лв", // Bulgarian Lev
+  BHD: ".د.ب", // Bahraini Dinar
+  BIF: "FBu", // Burundian Franc
+  BMD: "$", // Bermudian Dollar
+  BND: "$", // Brunei Dollar
+  BOB: "$b", // Bolivian Boliviano
+  BRL: "R$", // Brazilian Real
+  BSD: "$", // Bahamian Dollar
+  BTN: "Nu.", // Bhutanese Ngultrum
+  BWP: "P", // Botswanan Pula
+  BYN: "Br", // Belarusian Ruble
+  BZD: "$", // Belize Dollar
+  CAD: "$", // Canadian Dollar
+  CDF: "FC", // Congolese Franc
+  CHF: "CHF", // Swiss Franc
+  CLP: "$", // Chilean Peso
+  CNY: "¥", // Chinese Yuan
+  COP: "$", // Colombian Peso
+  CRC: "₡", // Costa Rican Colón
+  CUC: "$", // Cuban Convertible Peso
+  CUP: "$", // Cuban Peso
+  CVE: "$", // Cape Verdean Escudo
+  CZK: "Kč", // Czech Koruna
+  DJF: "Fdj", // Djiboutian Franc
+  DKK: "kr", // Danish Krone
+  DOP: "$", // Dominican Peso
+  DZD: "د.ج", // Algerian Dinar
+  EGP: "£", // Egyptian Pound
+  ERN: "Nfk", // Eritrean Nakfa
+  ETB: "Br", // Ethiopian Birr
+  EUR: "€", // Euro
+  FJD: "$", // Fijian Dollar
+  FKP: "£", // Falkland Islands Pound
+  FOK: "kr", // Faroese Króna
+  GBP: "£", // British Pound Sterling
+  GEL: "₾", // Georgian Lari
+  GHS: "₵", // Ghanaian Cedi
+  GIP: "£", // Gibraltar Pound
+  GMD: "D", // Gambian Dalasi
+  GNF: "FG", // Guinean Franc
+  GTQ: "Q", // Guatemalan Quetzal
+  GYD: "$", // Guyanaese Dollar
+  HKD: "$", // Hong Kong Dollar
+  HNL: "L", // Honduran Lempira
+  HRK: "kn", // Croatian Kuna
+  HTG: "G", // Haitian Gourde
+  HUF: "Ft", // Hungarian Forint
+  IDR: "Rp", // Indonesian Rupiah
+  ILS: "₪", // Israeli New Shekel
+  INR: "₹", // Indian Rupee
+  IQD: "ع.د", // Iraqi Dinar
+  IRR: "﷼", // Iranian Rial
+  ISK: "kr", // Icelandic Króna
+  JMD: "$", // Jamaican Dollar
+  JOD: "د.ا", // Jordanian Dinar
+  JPY: "¥", // Japanese Yen
+  KES: "KSh", // Kenyan Shilling
+  KGS: "с", // Kyrgystani Som
+  KHR: "៛", // Cambodian Riel
+  KID: "$", // Kiribati Dollar
+  KMF: "CF", // Comorian Franc
+  KRW: "₩", // South Korean Won
+  KWD: "د.ك", // Kuwaiti Dinar
+  KYD: "$", // Cayman Islands Dollar
+  KZT: "₸", // Kazakhstani Tenge
+  LAK: "₭", // Laotian Kip
+  LBP: "ل.ل", // Lebanese Pound
+  LKR: "Rs", // Sri Lankan Rupee
+  LRD: "$", // Liberian Dollar
+  LSL: "L", // Lesotho Loti
+  LYD: "ل.د", // Libyan Dinar
+  MAD: "د.م.", // Moroccan Dirham
+  MDL: "L", // Moldovan Leu
+  MGA: "Ar", // Malagasy Ariary
+  MKD: "ден", // Macedonian Denar
+  MMK: "K", // Myanma Kyat
+  MNT: "₮", // Mongolian Tugrik
+  MOP: "MOP$", // Macanese Pataca
+  MRU: "UM", // Mauritanian Ouguiya
+  MUR: "₨", // Mauritian Rupee
+  MVR: "Rf", // Maldivian Rufiyaa
+  MWK: "MK", // Malawian Kwacha
+  MXN: "$", // Mexican Peso
+  MYR: "RM", // Malaysian Ringgit
+  MZN: "MT", // Mozambican Metical
+  NAD: "$", // Namibian Dollar
+  NGN: "₦", // Nigerian Naira
+  NIO: "C$", // Nicaraguan Córdoba
+  NOK: "kr", // Norwegian Krone
+  NPR: "Rs", // Nepalese Rupee
+  NZD: "$", // New Zealand Dollar
+  OMR: "ر.ع.", // Omani Rial
+  PAB: "B/.", // Panamanian Balboa
+  PEN: "S/.", // Peruvian Nuevo Sol
+  PGK: "K", // Papua New Guinean Kina
+  PHP: "₱", // Philippine Peso
+  PKR: "Rs", // Pakistani Rupee
+  PLN: "zł", // Polish Zloty
+  PYG: "₲", // Paraguayan Guarani
+  QAR: "ر.ق", // Qatari Rial
+  RON: "lei", // Romanian Leu
+  RSD: "дин.", // Serbian Dinar
+  RUB: "₽", // Russian Ruble
+  RWF: "FRw", // Rwandan Franc
+  SAR: "ر.س", // Saudi Riyal
+  SBD: "$", // Solomon Islands Dollar
+  SCR: "₨", // Seychellois Rupee
+  SDG: "ج.س.", // Sudanese Pound
+  SEK: "kr", // Swedish Krona
+  SGD: "$", // Singapore Dollar
+  SHP: "£", // Saint Helena Pound
+  SLL: "Le", // Sierra Leonean Leone
+  SOS: "S", // Somali Shilling
+  SRD: "$", // Surinamese Dollar
+  SSP: "£", // South Sudanese Pound
+  STN: "Db", // São Tomé and Príncipe Dobra
+  SYP: "ل.س", // Syrian Pound
+  SZL: "E", // Swazi Lilangeni
+  THB: "฿", // Thai Baht
+  TJS: "SM", // Tajikistani Somoni
+  TMT: "T", // Turkmenistani Manat
+  TND: "د.ت", // Tunisian Dinar
+  TOP: "T$", // Tongan Paʻanga
+  TRY: "₺", // Turkish Lira
+  TTD: "$", // Trinidad and Tobago Dollar
+  TVD: "$", // Tuvaluan Dollar
+  TZS: "TSh", // Tanzanian Shilling
+  UAH: "₴", // Ukrainian Hryvnia
+  UGX: "USh", // Ugandan Shilling
+  USD: "$", // United States Dollar
+  UYU: "$U", // Uruguayan Peso
+  UZS: "soʼm", // Uzbekistani Som
+  VES: "Bs.S.", // Venezuelan Sovereign Bolívar
+  VND: "₫", // Vietnamese Dong
+  VUV: "VT", // Vanuatu Vatu
+  WST: "T", // Samoan Tala
+  XAF: "FCFA", // Central African CFA Franc
+  XAG: "XAG", // Silver Ounce
+  XAU: "XAU", // Gold Ounce
+  XCD: "$", // East Caribbean Dollar
+  XDR: "XDR", // International Monetary Fund (IMF) Special Drawing Rights
+  XOF: "CFA", // West African CFA Franc
+  XPF: "₣", // CFP Franc
+  YER: "ر.ي", // Yemeni Rial
+  ZAR: "R", // South African Rand
+  ZMK: "ZK", // Zambian Kwacha (Old)
+  ZMW: "ZK", // Zambian Kwacha (New)
+  ZWL: "$", // Zimbabwean Dollar
+};
+function getCurrencySymbol(currencyCode) {
+  return currencySymbols[currencyCode] || currencyCode;
+}
+const initializeCheckout = () => {
+  if (window.wc && window.wc.blocksCheckout != undefined) {
+    const aioce_settings = window.wc.wcSettings.getSetting(
+      "aioce-wc-blocks_data",
+      {}
+    );
+
+    const { registerCheckoutFilters } = window.wc.blocksCheckout;
+
+    const isOrderSummaryContext = (args) => args?.context === "summary";
+    const isCartContext = (args) => args?.context === "cart";
+
+    const modifyCartItemPrice = (
+      defaultValue,
+      extensions,
+      args,
+      validation
+    ) => {
+      if (aioce_settings.conversion_rate != null)
+        if (
+          (isCartContext(args) &&
+            aioce_settings.settings.aioce_wc_cart == "1") ||
+          (isOrderSummaryContext(args) &&
+            aioce_settings.settings.aioce_wc_checkout == "1")
+        ) {
+          let price =
+            parseInt(args.cartItem.totals.line_subtotal) *
+            aioce_settings.conversion_rate;
+
+          price /= 100;
+
+          return (
+            "<price/> (" +
+            getCurrencySymbol(aioce_settings.currency) +
+            " " +
+            price.toFixed(2) +
+            ")"
+          );
+        }
+      return defaultValue;
+    };
+    const modifySubtotalPriceFormat = (
+      defaultValue,
+      extensions,
+      args,
+      validation
+    ) => {
+      if (aioce_settings.conversion_rate != null)
+        if (
+          (isCartContext(args) &&
+            aioce_settings.settings.aioce_wc_cart == "1") ||
+          (isOrderSummaryContext(args) &&
+            aioce_settings.settings.aioce_wc_checkout == "1")
+        ) {
+          let price =
+            parseInt(args.cartItem.prices.sale_price) *
+            aioce_settings.conversion_rate;
+          price /= 100;
+
+          return (
+            "<price/> (" +
+            getCurrencySymbol(aioce_settings.currency) +
+            " " +
+            price.toFixed(2) +
+            ")"
+          );
+        }
+      return defaultValue;
+    };
+
+    const modifyTotalsPrice = (defaultValue, extensions, args, validation) => {
+      if (aioce_settings.conversion_rate != null)
+        if (
+          aioce_settings.settings.aioce_wc_cart == "1" ||
+          aioce_settings.settings.aioce_wc_checkout == "1"
+        ) {
+          let price =
+            parseInt(args.cart.cartTotals.total_price) *
+            aioce_settings.conversion_rate;
+          price /= 100;
+
+          return (
+            "<price/> (" +
+            getCurrencySymbol(aioce_settings.currency) +
+            " " +
+            price.toFixed(2) +
+            ")"
+          );
+        }
+      return defaultValue;
+    };
+    const render = () => {
+      return <></>;
+    };
+
+    registerCheckoutFilters("aioce", {
+      cartItemPrice: modifyCartItemPrice,
+      subtotalPriceFormat: modifySubtotalPriceFormat,
+      totalValue: modifyTotalsPrice,
+    });
+
+    // Clear the interval once the function has been successfully initialized
+    clearInterval(checkInterval);
+  }
+};
+
+// Check periodically if window.wc.blocksCheckout is defined
+const checkInterval = setInterval(() => {
+  if (window.wc && window.wc.blocksCheckout) {
+    initializeCheckout();
+  }
+}, 1000);
+
+// Also ensure the script runs after DOM is fully loaded
+document.addEventListener("DOMContentLoaded", () => {
+  if (window.wc && window.wc.blocksCheckout) {
+    initializeCheckout();
+  } else {
+    checkInterval;
+  }
+});

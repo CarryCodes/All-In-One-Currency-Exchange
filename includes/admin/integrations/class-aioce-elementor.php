@@ -24,10 +24,10 @@ class AIOCE_ELEMENTOR
 	 *
 	 * @since 1.0.0
 	 */
-	public function register_widgets()
+	public function register_widgets($widgets_manager)
 	{
 		require_once(AIOCE_ABSPATH . 'includes/admin/integrations/elementor/class-aioce-thank-you-widget.php');
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \AIOCE_Elementor());
+		$widgets_manager->register_widget_type(new \AIOCE_THANKYOU_WIDGET());
 	}
 }
 
