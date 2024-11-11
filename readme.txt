@@ -1,7 +1,7 @@
 === All In One Currency Exchange ===
 Contributors: CarryCodes
 Tags: woocommerce, ecommerce, currency, exchange, national currency
-Requires at least: 5.3
+Requires at least: 5.9
 Tested up to: 6.6
 Requires PHP: 7.3
 Stable tag: 1.0.0
@@ -58,9 +58,10 @@ The **All In One Currency Exchange** plugin connects to the [CurrencyExchangeRat
 
 When the plugin is activated, it sends the admin’s selected currency preferences to the CurrencyExchangeRateAPI each time the relevant widget is loaded. The API request follows the schema:
 
-```
+`
 https://api.currencyexchangerate-api.com/v1/YOUR-API-KEY/latest/USD
-```
+
+`
 
 Here, `YOUR-API-KEY` should be replaced with your actual API key, and `USD` is the base currency for the exchange rates.
 

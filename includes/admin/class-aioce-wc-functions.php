@@ -14,7 +14,7 @@ class AIOCE_WCFunc
 	public function __construct()
 	{
 		// Load Wc Functions
-
+		add_action('before_woocommerce_init',  array($this, 'HPOS_Compatibility'), 10, 2);
 		add_filter('woocommerce_get_price_html', array($this, 'shopProductPage'), 10, 2);
 		add_filter('woocommerce_cart_item_price', array($this, 'cartItemPrice'), 10, 2);
 		add_filter('woocommerce_cart_item_subtotal', array($this, 'cartItemSubtotal'), 10, 2);
@@ -22,6 +22,20 @@ class AIOCE_WCFunc
 		add_filter('woocommerce_order_formatted_line_subtotal', array($this, 'orderDetailsSubtotal'), 10, 2);
 		add_filter('woocommerce_order_subtotal_to_display', array($this, 'orderDetailsTotal'), 10, 3);
 		add_filter('woocommerce_get_formatted_order_total', array($this, 'orderDetailsTotal2'), 10, 2);
+	}
+	/**
+	 *-Declares compatibility of the All In One Currency Exchange plugin with WooCommerce's High-Performance Order Storage (HPOS).*
+	 *-This function checks if the FeaturesUtil class is available in the WooCommerce Utilities.
+	 *-If available, it uses the declare_compatibility method to formally declare that the All In One Currency Exchange plugin
+	 *-is compatible with WooCommerce's High-Performance Order Storage (HPOS) feature.
+	 *-This declaration helps prevent WooCommerce from flagging the plugin as incompatible when HPOS is enabled.
+	 *-AIOCE_PLUGIN_FILE should be defined in your plugin and should typically be the main plugin file path or a relevant file path.
+	 */
+	function HPOS_Compatibility()
+	{
+		if (class_exists(\Automattic\WooCommerce\Utilities\FeaturesUtil::class)) {
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('custom_order_tables', AIOCE_PLUGIN_FILE, true);
+		}
 	}
 	/**
 	 * Retrieves the conversion rate for a given currency using an external API.
@@ -36,11 +50,11 @@ class AIOCE_WCFunc
 	 */
 	function getConversionRate($currency)
 	{
-		$conversion_rate = get_transient('conversionRate' . $currency);
+		$conversion_rate = get_transient(AIOCE_PREFIX . 'conversionRate' . $currency);
 		if ($conversion_rate !== false) {
 			return $conversion_rate;
 		}
-		$quota = get_transient('quota');
+		$quota = get_transient(AIOCE_PREFIX . 'quota');
 		if ($quota !== false) {
 			return $quota;
 		}

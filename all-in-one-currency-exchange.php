@@ -8,7 +8,7 @@
  * Author URI: https://currencyexchangerate-api.com
  * Text Domain: all-in-one-currency-exchange
  * Requires at least: 5.9
- * Tested up to: 6.1
+ * Tested up to: 6.6
  * License:     GPL-2.0
  * Requires PHP: 7.2
  * Requires Plugins: woocommerce

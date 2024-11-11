@@ -255,9 +255,6 @@ const initializeCheckout = () => {
         }
       return defaultValue;
     };
-    const render = () => {
-      return <></>;
-    };
 
     registerCheckoutFilters("aioce", {
       cartItemPrice: modifyCartItemPrice,

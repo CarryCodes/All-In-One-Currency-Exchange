@@ -9,7 +9,7 @@ export default function Dashboard() {
 	const remainingQuota = useAppStore((state) => state.remaining);
 	useEffect(() => {
 		getQuota();
-	}, [getQuota]);
+	}, [getQuota, username]);
 
 	return (
 		<section className='m-12 max-sm:m-8 mt-16 '>

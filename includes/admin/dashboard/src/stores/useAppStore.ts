@@ -51,7 +51,6 @@ export const useAppStore = create<AppStoreType>()(
 					if (get().apikey != '') {
 						const response = await fetch(`https://api.currencyexchangerate-api.com/v1/${get().apikey}/quota`);
 						const data = await response.json();
-
 						if (data) {
 							set({
 								quota: data.quota,
